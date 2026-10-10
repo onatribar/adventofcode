@@ -1,11 +1,9 @@
+import aoc_lube
+
 class Solution:
     def __init__(self) -> None:
-        self.file:__file__ = open("day2.txt", "r")
-        self.rawdata:list[str] = [x for x in self.file.read().split("\n") if x]
+        self.rawdata:list[str] = [x for x in aoc_lube.fetch(year=2024, day=2).split("\n") if x]
         self.data:list[str] = [line.split() for line in self.rawdata]
-
-    def __del__(self) -> None:
-        self.file.close()
 
     def is_valid_sequence(self, nums: list[int]) -> bool:
         if len(nums) < 2:
@@ -53,6 +51,6 @@ class Solution:
     
 if __name__ == "__main__":
     soln = Solution()
-    print(f"Part 1: {soln.sol1()}")
-    print(f"Part 2: {soln.sol2()}")
+    aoc_lube.submit(year=2024, day=2, part=1, solution=soln.sol1)
+    aoc_lube.submit(year=2024, day=2, part=2, solution=soln.sol2)
     del(soln)

@@ -1,10 +1,8 @@
+import aoc_lube
+
 class Solution:
     def __init__(self) -> None:
-        self.file: __file__ = open("day4.txt", "r")
-        self.data: list[str] = self.file.read().strip().split('\n')
-        
-    def __del__(self) -> None:
-        self.file.close()
+        self.data: list[str] = aoc_lube.fetch(year=2024, day=4).strip().split('\n')
         
     def sol1(self) -> int:
         if not self.data or not self.data[0]:
@@ -77,7 +75,8 @@ class Solution:
 
 def main():
     ans = Solution()
-    print(f"Part1 ans: {ans.sol1()}", f"Part2 ans: {ans.sol2()}", sep="\n")
+    aoc_lube.submit(year=2024, day=4, part=1, solution=ans.sol1)
+    aoc_lube.submit(year=2024, day=4, part=2, solution=ans.sol2)
 
 if __name__ == "__main__":
     main()

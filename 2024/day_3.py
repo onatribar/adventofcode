@@ -1,10 +1,8 @@
+import aoc_lube
+
 class Solution:
     def __init__(self) -> None:
-        self.file:__file__ = open("day3.txt", "r")
-        self.data:list[str] = self.file.read()
-
-    def __del__(self) -> None:
-        self.file.close()
+        self.data:list[str] = aoc_lube.fetch(year=2024, day=3)
 
     def regex_matching(self, is_submissive=False) -> list[tuple[int,int]]:
         import re
@@ -39,5 +37,6 @@ class Solution:
 
 if __name__ == "__main__":
     ans = Solution()
-    print(f"Part1: {ans.sol1()}\nPart2: {ans.sol2()}")
+    aoc_lube.submit(year=2024, day=3, part=1, solution=ans.sol1)
+    aoc_lube.submit(year=2024, day=3, part=2, solution=ans.sol2)
     del(ans)
