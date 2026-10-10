@@ -1,0 +1,1 @@
+My irregular progress at [Advent of Code](https://adventofcode.com/) in Python. Solutions use [aoc_lube](https://pypi.org/project/aoc-lube/) to retrieve inputs and submit answers; see its documentation for installation and setup.
