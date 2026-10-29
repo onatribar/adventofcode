@@ -42,8 +42,27 @@ def part_one():
 
     return sum(solve(0, lights, buttons) for lights, buttons, _ in DATA)
 
+"""
+    Linear programming. Easy to spot the linear system, but didn't know about solvers.
+    Managed this one with help online. Worth revisiting later!
+"""
 def part_two():
-    pass
+    import numpy as np
+    from scipy.optimize import milp, LinearConstraint
+
+    def fewest_presses(buttons, jolts):
+        table = np.zeros((len(jolts), len(buttons)))
+        for button_idx, counters in enumerate(buttons):
+            for counter in counters:
+                table[counter][button_idx] = 1
+        result = milp(
+            c = np.ones(len(buttons)),
+            constraints = LinearConstraint(table, jolts, jolts),
+            integrality = np.ones(len(buttons)),
+        )
+        return round(result.fun)
+
+    return sum(fewest_presses(buttons, jolts) for _, buttons, jolts in DATA)
 
 aoc_lube.submit(year=2025, day=10, part=1, solution=part_one)
 aoc_lube.submit(year=2025, day=10, part=2, solution=part_two)
